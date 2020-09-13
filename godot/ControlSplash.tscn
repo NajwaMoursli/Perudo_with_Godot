@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ControlSplash.gd" type="Script" id=1]
+[ext_resource path="res://assets/de.jpg" type="Texture" id=2]
+
+[node name="ControlSplash" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
+
+[node name="Background" type="Sprite" parent="CanvasLayer"]
+scale = Vector2( 1.14, 1.14 )
+texture = ExtResource( 2 )
+centered = false
+region_rect = Rect2( 0, 0, 1024, 600 )
+
+[node name="ButtonVersMenu" type="Button" parent="CanvasLayer"]
+margin_left = 450.0
+margin_top = 290.0
+margin_right = 557.0
+margin_bottom = 310.0
+text = "Menu principal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/ButtonVersMenu" to="." method="_on_ButtonVersMenu_pressed"]

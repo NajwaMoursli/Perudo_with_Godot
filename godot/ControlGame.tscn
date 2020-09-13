@@ -1,0 +1,268 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ControlGame.gd" type="Script" id=1]
+[ext_resource path="res://Camera.gd" type="Script" id=2]
+[ext_resource path="res://assets/gameBG.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/incorrect.png" type="Texture" id=4]
+[ext_resource path="res://assets/correct.png" type="Texture" id=5]
+[ext_resource path="res://Dialog.gd" type="Script" id=6]
+[ext_resource path="res://Timer.gd" type="Script" id=7]
+
+[node name="ControlGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.698334
+margin_right = 0.698364
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( -1.0554e-07, -0.76181, 0.647801, -1.24115e-07, 0.647801, 0.76181, -1, 7.10543e-15, -1.62921e-07, 10, 10, 0 )
+script = ExtResource( 2 )
+
+[node name="Board" type="MeshInstance" parent="Spatial"]
+
+[node name="Background" type="Sprite" parent="Spatial/Board"]
+position = Vector2( 0.568802, 0 )
+scale = Vector2( 1.71, 1.71 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Dialog" type="Node2D" parent="Spatial"]
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Spatial/Dialog"]
+visible = false
+position = Vector2( 507, 440 )
+scale = Vector2( 0.953125, 0.828125 )
+
+[node name="Score" type="Sprite" parent="Spatial/Dialog"]
+position = Vector2( 79.114, 378.921 )
+
+[node name="ConnectedPopupPanel" type="PopupPanel" parent="Spatial"]
+margin_left = 0.698334
+margin_right = 8.69833
+margin_bottom = 22.0
+
+[node name="ConnectedLabel" type="Label" parent="Spatial/ConnectedPopupPanel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 18.0
+
+[node name="ButtonMenu" type="Button" parent="Spatial"]
+margin_left = 0.698334
+margin_right = 107.698
+margin_bottom = 20.0
+text = "Menu principal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiceLineEdit" type="LineEdit" parent="Spatial"]
+margin_top = 75.0
+margin_right = 110.0
+margin_bottom = 99.0
+text = "Nombre de dés"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ValueLineEdit" type="LineEdit" parent="Spatial"]
+margin_top = 110.0
+margin_right = 110.0
+margin_bottom = 134.0
+text = "Valeur"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NorthLabel" type="Label" parent="Spatial"]
+margin_left = 480.0
+margin_top = 40.0
+margin_right = 520.0
+margin_bottom = 54.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SouthLabel" type="Label" parent="Spatial"]
+margin_left = 480.0
+margin_top = 550.0
+margin_right = 520.0
+margin_bottom = 564.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EastLabel" type="Label" parent="Spatial"]
+margin_left = 950.0
+margin_top = 280.0
+margin_right = 990.0
+margin_bottom = 294.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WestLabel" type="Label" parent="Spatial"]
+margin_left = 40.0
+margin_top = 280.0
+margin_right = 80.0
+margin_bottom = 294.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WrongLabel" type="Label" parent="Spatial"]
+margin_left = 238.0
+margin_top = 295.0
+margin_right = 780.0
+margin_bottom = 416.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WrongSprite" type="Sprite" parent="Spatial"]
+position = Vector2( 506.831, 260 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="RightSprite" type="Sprite" parent="Spatial"]
+position = Vector2( 406.318, -63.5094 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="NorthDice1" type="Sprite" parent="Spatial"]
+position = Vector2( 400, 100 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="NorthDice2" type="Sprite" parent="Spatial"]
+position = Vector2( 450, 100 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="NorthDice3" type="Sprite" parent="Spatial"]
+position = Vector2( 500, 100 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="NorthDice4" type="Sprite" parent="Spatial"]
+position = Vector2( 550, 100 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="NorthDice5" type="Sprite" parent="Spatial"]
+position = Vector2( 600, 100 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="EastDice1" type="Sprite" parent="Spatial"]
+position = Vector2( 854, 250 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="EastDice2" type="Sprite" parent="Spatial"]
+position = Vector2( 854, 300 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="EastDice3" type="Sprite" parent="Spatial"]
+position = Vector2( 854, 350 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="EastDice4" type="Sprite" parent="Spatial"]
+position = Vector2( 854, 400 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="EastDice5" type="Sprite" parent="Spatial"]
+position = Vector2( 854, 450 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="WestDice1" type="Sprite" parent="Spatial"]
+position = Vector2( 170, 250 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="WestDice2" type="Sprite" parent="Spatial"]
+position = Vector2( 170, 300 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="WestDice3" type="Sprite" parent="Spatial"]
+position = Vector2( 170, 350 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="WestDice4" type="Sprite" parent="Spatial"]
+position = Vector2( 170, 400 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="WestDice5" type="Sprite" parent="Spatial"]
+position = Vector2( 170, 450 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SouthDice1" type="Sprite" parent="Spatial"]
+position = Vector2( 400, 510 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SouthDice2" type="Sprite" parent="Spatial"]
+position = Vector2( 450, 510 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SouthDice3" type="Sprite" parent="Spatial"]
+position = Vector2( 500, 510 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SouthDice4" type="Sprite" parent="Spatial"]
+position = Vector2( 550, 510 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SouthDice5" type="Sprite" parent="Spatial"]
+position = Vector2( 600, 510 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="BetButton" type="Button" parent="Spatial"]
+margin_left = 31.532
+margin_top = 145.138
+margin_right = 81.532
+margin_bottom = 165.138
+text = "Parier"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DudoButton" type="Button" parent="Spatial"]
+margin_left = 31.532
+margin_top = 175.0
+margin_right = 81.532
+margin_bottom = 195.0
+text = "Dudo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Countdown" type="Label" parent="Spatial"]
+margin_top = 36.0
+margin_right = 156.0
+margin_bottom = 54.0
+text = "Temps restant : "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BetLabel" type="RichTextLabel" parent="Spatial"]
+margin_top = 517.0
+margin_right = 271.0
+margin_bottom = 602.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+script = ExtResource( 7 )
+[connection signal="pressed" from="Spatial/ButtonMenu" to="." method="_on_ButtonMenu_pressed"]
+[connection signal="focus_entered" from="Spatial/DiceLineEdit" to="." method="_on_DiceLineEdit_focus_entered"]
+[connection signal="focus_entered" from="Spatial/ValueLineEdit" to="." method="_on_ValueLineEdit_focus_entered"]
+[connection signal="pressed" from="Spatial/BetButton" to="." method="_on_BetButton_pressed"]
+[connection signal="pressed" from="Spatial/DudoButton" to="." method="_on_DudoButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

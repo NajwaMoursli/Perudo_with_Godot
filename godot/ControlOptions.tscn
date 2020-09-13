@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ControlOptions.gd" type="Script" id=1]
+[ext_resource path="res://assets/de.jpg" type="Texture" id=2]
+
+[node name="ControlOptions" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite" parent="CanvasLayer"]
+scale = Vector2( 1.14, 1.14 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ButtonMenu" type="Button" parent="CanvasLayer"]
+margin_left = 450.0
+margin_top = 290.0
+margin_right = 557.0
+margin_bottom = 310.0
+text = "Menu principal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/ButtonMenu" to="." method="_on_ButtonMenu_pressed"]

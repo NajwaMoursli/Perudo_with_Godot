@@ -1,0 +1,8 @@
+./udpserver
+./udpclient localhost 4242 "Hello"
+
+
+C localhost 32002 Laurent N
+C localhost 32001 Laurent E
+C localhost 32005 Laurent O
+C localhost 32009 Laurent S

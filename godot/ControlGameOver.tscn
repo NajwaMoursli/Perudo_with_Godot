@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/nokiafc22.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ControlGameOver.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 1 )
+
+[node name="ControlGameOver" type="Control"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="canvas_bg" type="CanvasLayer" parent="."]
+
+[node name="bg" type="Sprite" parent="canvas_bg"]
+position = Vector2( -1.50732, 0 )
+scale = Vector2( 1.0252, 1.05995 )
+centered = false
+
+[node name="playAgain" type="Button" parent="canvas_bg"]
+margin_left = 288.307
+margin_top = 438.305
+margin_right = 460.307
+margin_bottom = 507.305
+custom_fonts/font = SubResource( 1 )
+text = "Play Again"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="canvas_bg"]
+margin_left = 607.782
+margin_top = 441.253
+margin_right = 779.782
+margin_bottom = 510.253
+custom_fonts/font = SubResource( 1 )
+text = "Exit"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="canvas_bg/playAgain" to="." method="_on_playAgain_pressed"]
+[connection signal="pressed" from="canvas_bg/exit" to="." method="_on_exit_pressed"]

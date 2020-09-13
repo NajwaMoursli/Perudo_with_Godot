@@ -1,0 +1,196 @@
+@startuml
+!pragma teoz true
+
+box "Clients" #LightBlue
+
+actor North
+
+actor East 
+
+actor South 
+
+actor West
+
+end box
+
+participant Server
+
+'autonumber
+
+
+
+== Connexion ==
+
+
+North -[#green]> Server: Tentative de connexion
+
+Server -[#red]> North: Joueurs connectés
+
+
+
+South -[#black]> Server: Tentative de connexion
+
+Server -[#red]> South: Joueurs connectés
+& South -[#red]> North: Joueurs connectés
+
+
+East -[#blue]> Server: Tentative de connexion
+
+Server -[#red]> South: Joueurs connectés
+& South -[#red]> East: Joueurs connectés
+& East -[#red]> North: Joueurs connectés
+
+
+West -[#purple]> Server: Tentative de connexion
+
+Server -[#red]> West: Joueurs connectés
+& West -[#red]> South: Joueurs connectés
+& South -[#red]> East: Joueurs connectés
+& East -[#red]> North: Joueurs connectés
+
+Server -[#red]>  West : Nouvelle manche
+& West -[#red]>  South : Nouvelle manche
+& South -[#red]>  East : Nouvelle manche
+& East -[#red]>  North : Nouvelle manche
+
+== Manche ==
+
+group Lancé de dés
+
+North -[#green]> North: Tirage aléatoire de 5 dés
+North-[#green]>Server : Résultat du tirage
+
+East -[#blue]> East: Tirage aléatoire de 5 dés
+East-[#blue]>Server : Résultat du tirage
+
+South -[#black]> South: Tirage aléatoire de 5 dés
+South-[#black]>Server : Résultat du tirage
+
+West -[#purple]> West: Tirage aléatoire de 5 dés
+West-[#purple]>Server : Résultat du tirage
+
+end
+
+Server-[#red]>Server: choisit qui joue entre North,\nEast, West et South
+
+group Tour de North 
+
+    Server -[#red]>  West: Au tour de North
+    & West -[#red]>  South: Au tour de North
+    & South -[#red]>  East: Au tour de North
+    & East -[#red]>  North: Au tour de North
+
+
+    activate North
+
+    North-[#green]>North: Réflexion
+
+    North-[#green]> Server : Envoie du choix de North
+    deactivate North
+
+    Server -[#red]> West: Envoie du pari de North
+    & West -[#red]> South: Envoie du pari de North
+    & South -[#red]> East: Envoie du pari de North
+
+
+  else Tour de East
+
+    Server -[#red]>  West: Au tour de East
+    & West -[#red]>  South: Au tour de East
+    & South -[#red]>  East: Au tour de East
+    activate East
+    & East -[#red]>  North: Au tour de East
+
+    East-[#blue]>East: Réflexion
+    East -[#red]> Server: East doute
+    deactivate East
+
+    Server -[#red]>  West : East doute
+    & West -[#red]>  South : East doute
+    & South -[#red]>  East : East doute
+    & East -[#red]>  North : East doute
+
+    Server -[#red]>  West : Révélation des cartes
+    & West -[#red]>  South : Révélation des cartes
+    & South -[#red]>  East : Révélation des cartes
+    & East -[#red]>  North : Révélation des cartes
+
+    group Pari correct 
+  
+
+           Server -[#red]>  West : North gagne le pari
+           & West -[#red]>  South : North gagne le pari
+           & South -[#red]>  East : North gagne le pari
+           & East -[#red]>  North : North gagne le pari
+
+           Server -[#red]>  West : East perd le pari
+           & West -[#red]>  South : East perd le pari
+           & South -[#red]>  East : East perd le pari
+           & East -[#red]>  North : East perd le pari
+                       
+
+              group Pacifico
+                 Server-[#red]> Server : nombre dés == 1 ?
+           Server -[#red]>  West : Pacifico East
+           & West -[#red]>  South : Pacifico East
+           & South -[#red]>  East : Pacifico East
+           & East -[#red]>  North : Pacifico East
+
+               else Perd la partie
+                 Server-[#red]> Server : nombre dés == 0 ?
+           Server -[#red]>  West : East perd la partie
+           & West -[#red]>  South : East perd la partie
+           & South -[#red]>  East : East perd la partie
+           & East -[#red]>  North : East perd la partie
+               end 
+ 
+    
+    else Pari erroné
+    
+           Server -[#red]>  West : North perd le pari
+           & West -[#red]>  South : North perd le pari
+           & South -[#red]>  East : North perd le pari
+           & East -[#red]>  North : North perd le pari
+
+           Server -[#red]>  West : East gagne le pari
+           & West -[#red]>  South : East gagne le pari
+           & South -[#red]>  East : East gagne le pari
+           & East -[#red]>  North : East gagne le pari
+
+
+              group Pacifico
+                 Server-[#red]> Server : nombre dés == 1 ?
+           Server -[#red]>  West : Pacifico North
+           & West -[#red]>  South : Pacifico North
+           & South -[#red]>  East : Pacifico North
+           & East -[#red]>  North : Pacifico North
+
+               else Perd la partie
+                 Server-[#red]> Server : nombre dés == 0 ?
+           Server -[#red]>  West : North perd la partie
+           & West -[#red]>  South : North perd la partie
+           & South -[#red]>  East : North perd la partie
+           & East -[#red]>  North : North perd la partie
+               end 
+    
+  end
+    
+  Server -[#red]>  West : Nouvelle manche
+  & West -[#red]>  South : Nouvelle manche
+  & South -[#red]>  East : Nouvelle manche
+  & East -[#red]>  North : Nouvelle manche
+
+  else Tour de East
+  else Tour de South
+
+
+  else Tour de West
+ 
+end
+
+...
+  Server -[#red]>  West : Fin de la partie
+  & West -[#red]>  South : Fin de la partie
+  & South -[#red]>  East : Fin de la partie
+  & East -[#red]>  North : Fin de la partie
+@enduml
